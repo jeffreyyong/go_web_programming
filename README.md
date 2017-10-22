@@ -1,2 +1,2 @@
-# go_web_programming
+# Go Web Programming
 Some web programming written in Go
