@@ -28,6 +28,14 @@ func main() {
 	}
 }
 
+// This version runs too fast, however it returns before it has finished doing what it's supposed to do,
+// It starts all the goroutines, one per file name, but doesn't wait for them to finish.
+func makeThumbnails2(filenames []string) {
+	for _, f := range filenames {
+		go thumbnail.ImageFile(f)
+	}
+}
+
 // makeThumbnails3 makes thumbnails of the specified files in parallel
 
 // Loop variable capture sindei an anonymous function
@@ -53,13 +61,13 @@ func makeThumbnails3(filenames []string) {
 }
 
 // makeThumbnails4 makes thumbnails for the specified files in parallel.
-// It returns an error if any step failed
+// When it encounters the first non-nil error, it returns the error to the caller, leaving no goroutine
+// draining the errors channel. Each remaoning worker goroutine will block forever when it tries to send
+// a value on that channel, and will never terminiate
 
-// This one has subtle bug. When it encounters the first non-nil error, it returns the error to the caller
-// leaving no goroutine draining the errors channel
+// One solution is to use a buffered channel with sufficient capacity that no worker goroutine will block when it sends a message
+// Another solution is to create another goroutine to drain the channel while the main goroutine returns the first error without delays
 
-// Each remaining worker goroutine will block forever when it tries to send a value on that channel, and will never terminate
-// This is a goroutine leak, may cause the whole programme to get stuck and run out of memory
 func makeThumbnails4(filenames []string) error {
 	errors := make(chan error)
 	for _, f := range filenames {
