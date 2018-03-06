@@ -1,17 +1,31 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"go_web_programming/romanserver/roman_numerals"
 	"html"
 	"net/http"
+	"os"
+	"os/signal"
 	"strconv"
 	"strings"
 	"time"
+
+	log "github.com/sirupsen/logrus"
+
+	"go_web_programming/romanserver/roman_numerals"
 )
 
 func main() {
+	stop := make(chan os.Signal)
+	signal.Notify(stop, os.Interrupt)
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.WithFields(log.Fields{
+			"method":      r.Method,
+			"Request uri": r.RequestURI,
+			"Remote addr": r.RemoteAddr,
+		}).Info("Received request")
 		urlPathElements := strings.Split(r.URL.Path, "/")
 
 		if urlPathElements[1] == "roman_number" {
@@ -36,6 +50,19 @@ func main() {
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
-	fmt.Printf("Listening...")
-	s.ListenAndServe()
+
+	go func() {
+		log.Fatal(s.ListenAndServe())
+	}()
+
+	log.WithFields(log.Fields{
+		"addr": s.Addr,
+	}).Info("Roman server listening for HTTP request")
+
+	<-stop
+
+	log.Info("Stopping...")
+	s.Shutdown(context.Background())
+	log.Info("Stopped successfully")
+
 }
