@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	pb "go_web_programming/protobuf_grpc/server_push/datafiles"
+	pb "web/protobuf_grpc/server_push/datafiles"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

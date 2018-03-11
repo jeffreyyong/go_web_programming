@@ -6,7 +6,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "go_web_programming/protobuf_grpc/grpc/datafiles"
+	pb "web/protobuf_grpc/grpc/datafiles"
 )
 
 const (

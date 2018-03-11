@@ -1,9 +1,9 @@
 package cake_test
 
 import (
-	"go_web_programming/gopl/8/cake"
 	"testing"
 	"time"
+	"web/gopl/8/cake"
 )
 
 var defaults = cake.Shop{

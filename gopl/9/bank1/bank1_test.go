@@ -2,8 +2,8 @@ package bank1_test
 
 import (
 	"fmt"
-	"go_web_programming/gopl/9/bank1"
 	"testing"
+	"web/gopl/9/bank1"
 )
 
 func TestBank(t *testing.T) {

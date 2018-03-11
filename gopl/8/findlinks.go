@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"go_web_programming/gopl/8/links"
+	"web/gopl/8/links"
 )
 
 // Crawl1 crawls web links starting with the comman-line arguments.

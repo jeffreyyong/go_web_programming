@@ -10,7 +10,7 @@ import (
 	restful "github.com/emicklei/go-restful"
 	_ "github.com/mattn/go-sqlite3"
 
-	"go_web_programming/restful_web_services/rail/dbutils"
+	"web/restful_web_services/rail/dbutils"
 )
 
 // DB Driver visible to whole programme

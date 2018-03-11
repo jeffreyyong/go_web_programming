@@ -1,10 +1,10 @@
 package memo_test
 
 import (
-	memo "go_web_programming/gopl/9/memo3"
 	"testing"
+	memo "web/gopl/9/memo3"
 
-	"go_web_programming/gopl/9/memotest"
+	"web/gopl/9/memotest"
 )
 
 var httpGetBody = memotest.HTTPGetBody

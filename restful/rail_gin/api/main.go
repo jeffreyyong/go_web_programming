@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
 
-	"go_web_programming/restful_web_services/rail_gin/dbutils"
+	"web/restful_web_services/rail_gin/dbutils"
 )
 
 // DB Driver visible to the whole programme

@@ -9,7 +9,7 @@ import (
 	"os"
 	"sync"
 
-	"go_web_programming/gopl/8/thumbnail/thumbnail"
+	"web/gopl/8/thumbnail/thumbnail"
 )
 
 func main() {

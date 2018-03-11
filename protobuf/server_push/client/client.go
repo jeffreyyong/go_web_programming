@@ -5,7 +5,7 @@ import (
 	"io"
 	"log"
 
-	pb "go_web_programming/protobuf_grpc/server_push/datafiles"
+	pb "web/protobuf_grpc/server_push/datafiles"
 
 	"google.golang.org/grpc"
 )

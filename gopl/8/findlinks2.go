@@ -4,9 +4,9 @@ package main
 
 import (
 	"fmt"
-	"go_web_programming/gopl/8/links"
 	"log"
 	"os"
+	"web/gopl/8/links"
 )
 
 // tokens is a counting sempahore used to enforce a limit of 20 concurrent requests.

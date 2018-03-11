@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	pb "go_web_programming/protobuf_grpc/grpc/datafiles"
+	pb "web/protobuf_grpc/grpc/datafiles"
 )
 
 const (

@@ -1,9 +1,9 @@
 package bank_test
 
 import (
-	bank "go_web_programming/gopl/9/bank3"
 	"sync"
 	"testing"
+	bank "web/gopl/9/bank3"
 )
 
 func TestBank(t *testing.T) {
