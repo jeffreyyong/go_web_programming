@@ -1,0 +1,21 @@
+syntax = "proto3";
+package datafiles;
+
+message TransactionRequest {
+  string from = 1;
+  string to = 2;
+  float amount = 3;
+}
+
+message TransactionResponse {
+  string status = 1;
+  int32 step = 2;
+  string description = 3;
+}
+
+// Returning a stream instead of a plain response
+// The use case of this project is: the client sends a money transfer request to the server, the server
+// does a few tasks and sends those step details as stream of responses back to the server.
+service MoneyTransaction {
+  rpc MakeTransaction(TransactionRequest) returns (stream TransactionResponse) {}
+}
