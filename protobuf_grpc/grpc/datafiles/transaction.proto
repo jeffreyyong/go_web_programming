@@ -1,0 +1,17 @@
+syntax = "proto3";
+package datafiles;
+
+message TransactionRequest {
+  string from = 1;
+  string to = 2;
+  float amount = 3;
+}
+
+message TransactionResponse {
+  bool confirmation = 1;
+}
+
+// Tells GRPC to treat it as a service, and all the RPC methods will act as an interface for a server to implement this
+service MoneyTransaction {
+  rpc MakeTransaction(TransactionRequest) returns (TransactionResponse) {}
+}
